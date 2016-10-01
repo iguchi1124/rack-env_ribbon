@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "devDependencies": {
+    "coffee-script": "^1.11.0",
+    "github-fork-ribbon-css": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2"
+  }
+}

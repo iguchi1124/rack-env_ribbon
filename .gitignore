@@ -1,0 +1,7 @@
+.bundle/
+log/*.log
+pkg/
+
+.ruby-version
+/node_modules
+Gemfile.lock
