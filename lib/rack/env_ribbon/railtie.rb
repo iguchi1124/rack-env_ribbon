@@ -1,7 +1,12 @@
+require 'rails'
+require 'rack/env_ribbon'
+
 module Rack
   class EnvRibbon
     class Railtie < Rails::Railtie
-      # TODO: Support rails application
+      initializer 'rack-env_ribbon' do
+        config.app_middleware.use Rack::EnvRibbon
+      end
     end
   end
 end

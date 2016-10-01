@@ -8,15 +8,17 @@ module Rack
 
     def call(env)
       status, headers, body = @app.call(env)
+      new_body = []
+
       if headers[CONTENT_TYPE] =~ /\btext\/html\b/
-        new_body = body.map { |b|
+        body.each do |b|
           converter = HtmlConverter.new(b, app_env)
           next unless converter.valid?
           converter.insert_env_ribbon_into_body
           converter.insert_env_string_into_title
           converter.insert_env_ribbon_style_into_head
-          converter.result
-        }.compact
+          new_body << converter.result
+        end
 
         unless new_body.empty?
           body = new_body
