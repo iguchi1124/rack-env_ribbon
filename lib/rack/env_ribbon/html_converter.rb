@@ -23,12 +23,12 @@ module Rack
 
         content = <<-EOS
 <style>
-  #{css_file.read}
+#{css_file.read}
 </style>
 
 <!--[if lt IE 9]>
 <style>
-  #{ie_css_file.read}
+#{ie_css_file.read}
 </style>
 <![endif]-->
         EOS
