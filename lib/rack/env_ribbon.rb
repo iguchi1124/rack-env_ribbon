@@ -12,7 +12,7 @@ module Rack
       if headers[CONTENT_TYPE] =~ /\btext\/html\b/
         new_body = []
 
-        # The response body must respond to each.
+        # The response body must respond to `each` method.
         body.each do |html|
           converter = HtmlConverter.new(html, app_env)
           next unless converter.valid?
