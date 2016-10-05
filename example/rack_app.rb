@@ -3,7 +3,20 @@ require 'rack/env_ribbon'
 
 class Application
   def call(env)
-      [200, {'Content-Type' => 'text/html'}, ['<html><head><title></title></head><body></body></html>']]
+    status = 200
+    headers = { 'Content-Type' => 'text/html' }
+    html = <<-EOS
+<html>
+  <head>
+    <title>sample app</title>
+  </head>
+  <body>
+    <p>app body</p>
+  </body>
+</html>
+      EOS
+
+    [status, headers, [html]]
   end
 end
 

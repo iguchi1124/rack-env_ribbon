@@ -47,4 +47,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'rack-env_ribbon', require: 'rack/env_ribbon/railtie'
+gem 'rack-env_ribbon'

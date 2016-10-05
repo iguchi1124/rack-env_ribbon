@@ -8,8 +8,8 @@ module Rack
         @env = env.to_s
       end
 
-      def valid?
-        @valid ||= has_tag?('html') && has_tag?('body')
+      def valid_html?
+        has_tag?('html') && has_tag?('body')
       end
 
       def insert_env_string_into_title

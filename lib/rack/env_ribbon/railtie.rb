@@ -1,6 +1,3 @@
-require 'rails'
-require 'rack/env_ribbon'
-
 module Rack
   class EnvRibbon
     class Railtie < Rails::Railtie
