@@ -24,7 +24,7 @@ run app
 
 ### Sinatra
 
-Add `use Rack::EnvRibbon` in the same way as rack application.
+Add `use Rack::EnvRibbon` in the same way as rack application
 
 ```rb
 require 'sinatra'
@@ -51,13 +51,14 @@ end
 
 ### Rails
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile
 
 ```ruby
-gem 'rack-env_ribbon', require: 'rack/env_ribbon/railtie'
+gem 'rack-env_ribbon'
 ```
 
-And then execute:
+And then execute
+
 ```bash
 $ bundle
 ```
