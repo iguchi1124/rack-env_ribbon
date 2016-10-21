@@ -14,12 +14,12 @@ module Rack
         has_tag?('html') && has_tag?('body')
       end
 
-      def insert_env_string_into_title
+      def insert_env_string_into_title_tag!
         tag = 'title'
         insert_into(tag, "(#{env}) ") if has_tag?(tag)
       end
 
-      def insert_env_ribbon_style_into_head
+      def insert_env_ribbon_style_into_head_tag!
         css_file = ::File.open(::File.join(assets_path, 'stylesheets/env_ribbon.css'))
         ie_css_file = ::File.open(::File.join(assets_path, 'stylesheets/env_ribbon.ie.css'))
 
@@ -41,7 +41,7 @@ module Rack
         insert_into('head', content, last_line: true, new_line: true)
       end
 
-      def insert_env_ribbon_into_body
+      def insert_env_ribbon_into_body_tag!
         content = <<-EOS
 <a class="github-fork-ribbon left-top red fixed" onClick="this.style.display='none'" title="#{env}">#{env}</a>
         EOS

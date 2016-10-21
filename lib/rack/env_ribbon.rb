@@ -19,14 +19,14 @@ module Rack
         new_body = []
         new_content_length = 0
 
-        # The response body must respond to `each` method.
         body.each do |html|
           converter = HtmlConverter.new(html, app_env)
           next unless converter.valid_html?
 
-          converter.insert_env_ribbon_into_body
-          converter.insert_env_string_into_title
-          converter.insert_env_ribbon_style_into_head
+          converter.insert_env_ribbon_into_body_tag!
+          converter.insert_env_string_into_title_tag!
+          converter.insert_env_ribbon_style_into_head_tag!
+
           result = converter.result
 
           new_body << result
@@ -51,8 +51,7 @@ module Rack
     end
 
     def applicable?(status, headers)
-      !STATUS_WITH_NO_ENTITY_BODY.include?(status) &&
-        headers[CONTENT_TYPE] =~ /\btext\/html\b/
+      !STATUS_WITH_NO_ENTITY_BODY.include?(status) && headers[CONTENT_TYPE] =~ /\btext\/html\b/
     end
   end
 end
