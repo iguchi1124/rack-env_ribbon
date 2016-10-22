@@ -1,4 +1,7 @@
 # Rack::EnvRibbon
+
+[![Build Status](https://travis-ci.org/iguchi1124/rack-env_ribbon.svg?branch=master)](https://travis-ci.org/iguchi1124/rack-env_ribbon)
+
 Add env ribbon on your rack application views.
 
 ![](screen_shot.png)
