@@ -15,7 +15,7 @@ module Rack
       status, headers, body = @app.call(env)
       headers = HeaderHash.new(headers)
 
-      if applicable?(status, headers)
+      if !STATUS_WITH_NO_ENTITY_BODY.include?(status) && headers[CONTENT_TYPE] =~ /\btext\/html\b/
         new_body = []
         new_content_length = 0
 
@@ -48,10 +48,6 @@ module Rack
 
     def app_env
       @app_env ||= ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
-    end
-
-    def applicable?(status, headers)
-      !STATUS_WITH_NO_ENTITY_BODY.include?(status) && headers[CONTENT_TYPE] =~ /\btext\/html\b/
     end
   end
 end

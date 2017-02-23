@@ -20,32 +20,14 @@ module Rack
       end
 
       def insert_env_ribbon_style_into_head_tag!
-        css_file = ::File.open(::File.join(assets_path, 'stylesheets/env_ribbon.css'))
-        ie_css_file = ::File.open(::File.join(assets_path, 'stylesheets/env_ribbon.ie.css'))
-
-        content = <<-EOS
-<style>
-#{css_file.read}
-</style>
-
-<!--[if lt IE 9]>
-<style>
-#{ie_css_file.read}
-</style>
-<![endif]-->
-        EOS
-
-        css_file.close
-        ie_css_file.close
-
+        css = ::File.open(::File.join(assets_path, 'stylesheets/env_ribbon.css'))
+        content = "<style>#{css.read}</style>"
+        css.close
         insert_into('head', content, last_line: true, new_line: true)
       end
 
       def insert_env_ribbon_into_body_tag!
-        content = <<-EOS
-<a class="github-fork-ribbon left-top red fixed" onClick="this.style.display='none'" title="#{env}">#{env}</a>
-        EOS
-
+        content = "<a class=\"github-fork-ribbon left-top red fixed\" onClick=\"this.style.display='none'\" title=\"#{env}\">#{env}</a>"
         insert_into('body', content, new_line: true)
       end
 

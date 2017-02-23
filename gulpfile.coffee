@@ -13,8 +13,3 @@ gulp.task 'build', ->
     .pipe(rename('env_ribbon.css'))
     .pipe(minifyCss())
     .pipe(gulp.dest(path))
-
-  gulp.src('node_modules/github-fork-ribbon-css/gh-fork-ribbon.ie.css')
-    .pipe(rename('env_ribbon.ie.css'))
-    .pipe(minifyCss())
-    .pipe(gulp.dest(path))
