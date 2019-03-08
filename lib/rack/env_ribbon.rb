@@ -47,7 +47,7 @@ module Rack
     private
 
     def app_env
-      @app_env ||= ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
+      @app_env ||= ENV['RACK_ENV_RIBBON_ENV'] || ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
     end
   end
 end
