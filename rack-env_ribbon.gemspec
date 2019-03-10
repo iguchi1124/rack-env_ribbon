@@ -15,10 +15,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rack'
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec'
   s.add_development_dependency 'capybara'
-  s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'pry-byebug'
+  s.add_development_dependency 'puma'
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'selenium-webdriver'
 end
