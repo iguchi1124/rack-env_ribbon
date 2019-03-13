@@ -3,8 +3,6 @@
 module Rack
   class EnvRibbon
     class HtmlConverter
-      attr_reader :html, :env
-
       def initialize(html, env)
         @html = html
         @env = env.to_s
@@ -16,7 +14,7 @@ module Rack
 
       def insert_env_string_into_title_tag!
         tag = 'title'
-        insert_into(tag, "(#{env}) ") if has_tag?(tag)
+        insert_into(tag, "(#{@env}) ") if has_tag?(tag)
       end
 
       def insert_env_ribbon_style_into_head_tag!
@@ -27,12 +25,12 @@ module Rack
       end
 
       def insert_env_ribbon_into_body_tag!
-        content = "<a class=\"github-fork-ribbon left-top red fixed\" onClick=\"this.style.display='none'\" title=\"#{env}\">#{env}</a>"
+        content = "<a class=\"github-fork-ribbon left-top red fixed\" onClick=\"this.style.display='none'\" title=\"#{@env}\">#{@env}</a>"
         insert_into('body', content, new_line: true)
       end
 
       def result
-        html
+        @html
       end
 
       private
@@ -46,16 +44,16 @@ module Rack
       end
 
       def has_tag?(tag)
-        !!(html =~ start_tag_regexp(tag) && html =~ end_tag_regexp(tag))
+        !!(@html =~ start_tag_regexp(tag) && @html =~ end_tag_regexp(tag))
       end
 
       def insert_into(tag, content, last_line: false, new_line: false)
         if last_line
           content_placement = new_line ?  "\n#{content}\n\\1" : "#{content}\\1"
-          html.sub!(end_tag_regexp(tag), content_placement)
+          @html = @html.sub(end_tag_regexp(tag), content_placement)
         else
           content_placement = new_line ?  "\n\\1#{content}\n" : "\\1#{content}"
-          html.sub!(start_tag_regexp(tag), content_placement)
+          @html = @html.sub(start_tag_regexp(tag), content_placement)
         end
       end
 
